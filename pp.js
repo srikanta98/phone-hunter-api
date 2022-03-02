@@ -9,6 +9,7 @@ const searchButton = () =>{
         input.value="";
         main.innerHTML="";
     }
+    
     // else if ((input != 'oppo') || (input != 'samsung') || (input !='iphone')){
     //     input.value="";
     //     main.innerHTML="";
@@ -27,8 +28,8 @@ const searchButton = () =>{
 
 const cardsDisplay = (cards) =>{
     
-    if (!cards) {
-        alert("Please give a positive number");
+    if (cards.length == 0) {
+        error.innerText="Please give a positive mobile details";
     }
     // cards = cards.cards;
     console.log(cards);
@@ -37,6 +38,7 @@ const cardsDisplay = (cards) =>{
         const div = document.createElement("div");
         div.classList.add("col-lg-4")
         div.classList.add("mb-5")
+        error.innerHTML=""
         div.innerHTML=`
             <div class="card" style="width: 18rem;">
                 <img src="${data.image}" class="card-img-top" alt="...">
@@ -67,14 +69,14 @@ const showInfo= info => {
       <div class="card-body">
         <h5 class="card-title">Brand: ${info.brand}</h5>
         <p class="card-text">Slug: ${info.slug}</p>
-        <p class="card-text">RealeaseDate: ${info.releaseDate}</p>
+        <p class="card-text">RealeaseDate:${info.releaseDate?info.releaseDate:'Main information not available'}</p>
         <p class="card-text">Sensors: ${info.mainFeatures.sensors}</p>
         <p class="card-text">Memory: ${info.mainFeatures.memory}</p>
-        <p class="card-text">USB: ${info.others.USB}</p>
-        <p class="card-text">WLAN: ${info.others.WLAN}</p>       
-        <p class="card-text">NFC: ${info.others.NFC}</p>       
-        <p class="card-text">GPS: ${info.others.GPS}</p>       
-        <p class="card-text">BLUETOOTH: ${info.others.Bluetooth}</p>       
+        <p class="card-text">USB:  ${info.others?info.others.USB:'Main information not available'}</p>
+        <p class="card-text">WLAN: ${info.others?info.others.WLAN:'Main information not available'}</p>       
+        <p class="card-text">NFC:  ${info.others?info.others.NFC:'Main information not available'}</p>       
+        <p class="card-text">GPS: ${info.others?info.others.GPS:'Main information not available'}</p>       
+        <p class="card-text">BLUETOOTH:  ${info.others?info.others.Bluetooth:'Main information not available'}</p>       
       </div>
     </div>  
     `;
@@ -84,27 +86,3 @@ const showInfo= info => {
 
 
 
-//         .then(data => {
-//             const allCards = data;
-//             console.log(allCards);
-// //             // code mani jei button e click korbo
-// //             // card jetha lopp martese ak step aghe
-// //             // card.code=code mane jetha input e dibo oitha card.code er sathe mile gele
-//             // pop => pop.code ata value ta indirecty data.code theke antese
-//             const singleCard = allCards.find(pop => pop.slug === id)
-//             const div = document.createElement("div");
-//             // click korle agher gula jabe ga
-            
-//             div.innerHTML=`
-//                 <div class="card" style="width: 18rem;">
-//                     <img src="${singleCard.image}" class="card-img-top" alt="...">
-//                     <div class="card-body">
-//                         <h5 class="card-title">${singleCard.releaseDate}</h5>
-//                         <p class="card-text">${singleCard.code}</p>
-//                         <p class="card-text">${singleCard.value}</p>
-//                     </div>
-//                 </div>
-//             `
-//             main.appendChild(div)
-//         })
-// }
