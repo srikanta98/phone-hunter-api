@@ -1,20 +1,16 @@
+// getting id
 const main = document.getElementById("main");
 const searchButton = () =>{
     const input = document.getElementById("input-value").value;
     const error = document.getElementById("error");
    
-    
+    // error case
     if(input <= 0){
         error.innerText="Please give a positive number";
         input.value="";
         main.innerHTML="";
     }
-    
-    // else if ((input != 'oppo') || (input != 'samsung') || (input !='iphone')){
-    //     input.value="";
-    //     main.innerHTML="";
-    //     error.innerText="Please give a positive phone detail";
-    // }
+      
     else{
         fetch(`https://openapi.programming-hero.com/api/phones?search=${input}`)
         .then(res => res.json())
@@ -50,11 +46,11 @@ const cardsDisplay = (cards) =>{
                 </div>
             </div>
         ` 
-        // card.code e oikhane 5c/3c dewa taktece
+        // appending elements
         main.appendChild(div)
     }
 }
-
+// showing individual data
 const cardDetails = (id) =>{
         fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
         .then(res => res.json())
